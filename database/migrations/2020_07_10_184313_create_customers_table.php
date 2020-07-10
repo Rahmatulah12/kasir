@@ -17,6 +17,7 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->string('name', 75);
             $table->char('gender', 1);
+            $table->integer('point');
             $table->string('address', 255);
             $table->timestamps();
         });

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-});
+// route customer
+Route::get('/', 'CustomerController@index')->name('customer.index');
+Route::get('/customer/create', 'CustomerController@create')->name('customer.create');
+Route::post('/customer/create', 'CustomerController@store');

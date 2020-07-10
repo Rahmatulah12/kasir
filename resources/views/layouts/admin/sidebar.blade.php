@@ -13,7 +13,7 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
-                <li>
+                <li class="{{request()->is('/')? 'active' : ''}}">
                     <a href="{{url('/')}}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Customer</a>
                 </li>
                 <li>
@@ -54,7 +54,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="{{url('/hadiah')}}"><i class="fa fa-dashboard fa-fw"></i> Hadiah</a>
+                    <a href="{{url('/hadiah')}}"><i class="fa fa-gift fa-fw"></i> Hadiah</a>
                 </li>
             </ul>
         </div>
