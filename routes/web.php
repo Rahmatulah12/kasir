@@ -15,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 // route customer
 Route::get('/', 'CustomerController@index')->name('customer.index');
+Route::get('/customer/{id}', 'CustomerController@show')->name('customer.show');
 Route::get('/customer/create', 'CustomerController@create')->name('customer.create');
 Route::post('/customer/create', 'CustomerController@store');
+Route::delete('/customer/{id}', 'CustomerController@destroy');
+Route::get('/customer/{id}/edit', 'CustomerController@edit')->name('customer.update');
+Route::patch('/customer/edit', 'CustomerController@update');

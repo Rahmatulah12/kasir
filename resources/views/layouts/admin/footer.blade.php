@@ -9,7 +9,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{asset('assets/dist/js/sb-admin-2.js')}}"></script>
 <script src="{{asset('assets/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')}}"></script>	
+<script src="{{asset('assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')}}"></script>
 @yield('script')
 
 </body>

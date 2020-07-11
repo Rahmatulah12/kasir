@@ -16,59 +16,63 @@
                     Data Customer
                 </div>
                 <div class="panel-body">
+                    @if(session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('status')}}
+                    </div>
+                    @endif
                     <div class="dataTable_wrapper">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-customer">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        Nama Customer
-                                    </th>
-                                    <th class="text-center">
-                                        Jenis Kelamin
-                                    </th>
-                                    <th class="text-center">
-                                        Point
-                                    </th>
-                                    <th class="text-center">
-                                        Alamat
-                                    </th>
-                                    <th class="text-center">
-                                        Aksi
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($customers as $customer)
-                                <tr>
-                                    <td>
-                                        {{ucfirst($customer['name'])}}
-                                    </td>
-                                    <td>
-                                        @if($customer['gender'] == 'l')
-                                            Laki-Laki
-                                        @else
-                                            Perempuan
-                                        @endif
-                                    </td>
-                                    <td>
-                                        {{ucfirst($customer['point'])}}
-                                    </td>
-                                    <td>
-                                        {{ucfirst($customer['address'])}}
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-warning btn-sm">
-                                            Update Data
-                                        </a>
-                                        <button class="btn btn-danger btn-sm">
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <a href="{{url('customer/create')}}" class="btn btn-success btn-md">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-customer">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            Nama Customer
+                                        </th>
+                                        <th class="text-center">
+                                            Jenis Kelamin
+                                        </th>
+                                        <th class="text-center">
+                                            Point
+                                        </th>
+                                        <th class="text-center">
+                                            Alamat
+                                        </th>
+                                        <th class="text-center">
+                                            Aksi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($customers as $customer)
+                                    <tr>
+                                        <td>
+                                            {{ucfirst($customer['name'])}}
+                                        </td>
+                                        <td>
+                                            @if($customer['gender'] == 'l')
+                                                Laki-Laki
+                                            @else
+                                                Perempuan
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ucfirst($customer['point'])}}
+                                        </td>
+                                        <td>
+                                            {{ucfirst($customer['address'])}}
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{url('/customer')}}/{{base64_encode($customer['id'])}}" class="btn btn-info btn-sm">
+                                                Details
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="{{url('customer/craete')}}" class="btn btn-success btn-md">
                             New Customer
                         </a>
                     </div>
@@ -80,7 +84,6 @@
 @section('script')
 <script>
     $('#dataTables-customer').DataTable({
-        data : row,
         responsive:true
     });
 </script>
