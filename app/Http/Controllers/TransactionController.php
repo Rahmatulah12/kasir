@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Transaction;
+use \App\Customer;
 
 class TransactionController extends Controller
 {
@@ -13,7 +15,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $result = Transaction::join('customers', 'sales_transactions.customer_id', '=', 'customers.id')
+        ->join('products', 'sales_transactions.product_id', '=', 'products.id')
+        ->select('sales_transactions.*', 'customers.name AS customer_name', 'products.name as product_name', 'products.barcode as product_barcode')
+        ->get()->toArray();
+        return view('admin.transaction.index', compact('result'));
     }
 
     /**

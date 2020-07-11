@@ -21,3 +21,6 @@ Route::post('/customer/create', 'CustomerController@store');
 Route::delete('/customer/{id}', 'CustomerController@destroy');
 Route::get('/customer/{id}/edit', 'CustomerController@edit')->name('customer.update');
 Route::patch('/customer/edit', 'CustomerController@update');
+
+// Route Transaksi
+Route::resource('transaction', 'TransactionController');

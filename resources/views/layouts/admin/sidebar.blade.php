@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{url('transaction')}}">
                                 <i class="fa fa-file fa-fw" aria-hidden="true"></i> Laporan Transaksi
                             </a>
                         </li>
