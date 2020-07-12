@@ -56,7 +56,7 @@
                                             {{ucfirst($row['product_name'])}}
                                         </td>
                                         <td>
-                                            {{date('d-m-Y',strtotime($row['created_at']))}}
+                                            {{date('d-m-Y H:i',strtotime($row['created_at']))}}
                                         </td>
                                         <td class="text-center">
                                             <a href="#" class="btn btn-info btn-sm">

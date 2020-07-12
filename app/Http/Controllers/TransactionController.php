@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Transaction;
 use \App\Customer;
+use \App\Product;
+use \App\TemporarySalesTransaction as temp;
 
 class TransactionController extends Controller
 {
@@ -29,7 +31,14 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $result = temp::join('customers', 'temporary_sales_transactions.customer_id', '=', 'customers.id')
+        ->join('products', 'temporary_sales_transactions.product_id', '=', 'products.id')
+        ->select('temporary_sales_transactions.*', 'customers.name AS customer_name', 'products.name as product_name', 'products.barcode as product_barcode')
+        ->get()->toArray();
+        $customer = Customer::select('id', 'name')->get()->toArray();
+        $product = Product::select('id', 'name')->get()->toArray();
+        $data = ['customer' => $customer, 'product' => $product];
+        return view('admin.transaction.create', compact('data'), compact('result'));
     }
 
     /**
@@ -40,7 +49,10 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ['customer_id' => $request->customer_id, 'product_id' => $request->product_id, 'qty' => $request->qty];
+        temp::create($data);
+        Transaction::create($data);
+        return back();
     }
 
     /**

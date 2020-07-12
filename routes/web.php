@@ -23,4 +23,8 @@ Route::get('/customer/{id}/edit', 'CustomerController@edit')->name('customer.upd
 Route::patch('/customer/edit', 'CustomerController@update');
 
 // Route Transaksi
-Route::resource('transaction', 'TransactionController');
+Route::get('/transaction', 'TransactionController@index');
+Route::get('/transaction/sales', 'TransactionController@create')->name('transaction.create');
+Route::post('/transaction/sales', 'TransactionController@store');
+Route::get('/transaction/sales-temp', 'TransactionController@tempSales');
+Route::get('/transaction/{id}/product', 'TransactionController@product');

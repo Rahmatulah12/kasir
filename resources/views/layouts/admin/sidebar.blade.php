@@ -20,7 +20,7 @@
                     <a href="#"><i class="fa fa-table fa-fw"></i> Transaksi<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">
+                            <a href="{{url('/transaction/sales')}}">
                                 <i class="fa fa-laptop fa-fw" aria-hidden="true"></i> Transaksi Baru
                             </a>
                         </li>
